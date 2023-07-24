@@ -76,7 +76,7 @@ let showRegisterForm = true;
 
 const register = async () => {
   try {
-    const response = await axios.post('http://localhost:3333/user/register', {
+    const response = await axios.post('https://anna-be.vercel.app/register', {
       username: registerUsername,
       password: registerPassword
     });
@@ -99,7 +99,7 @@ const register = async () => {
 
 const login = async () => {
   try {
-    const response = await axios.post('http://localhost:3333/user/login', {
+    const response = await axios.post('https://anna-be.vercel.app/login', {
       username: loginUsername,
       password: loginPassword
     });
