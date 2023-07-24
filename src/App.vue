@@ -18,47 +18,6 @@
     <div class="form-container" v-if="isLoggedIn">
       <RouterView />
     </div>
-
-    <div class="form-container" v-else>
-      <div v-if="showRegisterForm" class="register-container">
-        <!-- Form Register -->
-        <h1 class="form-title">Register Page</h1>
-        <form @submit.prevent="register" class="form">
-          <label class="form-label">
-            Username:
-            <input type="text" v-model="registerUsername" required class="form-input">
-          </label>
-          <br>
-          <label class="form-label">
-            Password:
-            <input type="password" v-model="registerPassword" required class="form-input">
-          </label>
-          <br>
-          <button type="submit" class="form-button">Register</button>
-        </form>
-        <p>Already have an account? <a @click="showRegisterForm = false">Login</a></p>
-      </div>
-
-      <div v-else class="login-container">
-        <!-- Form Login -->
-        <h1 class="form-title">Login Page</h1>
-        <form @submit.prevent="login" class="form">
-          <label class="form-label">
-            Username:
-            <input type="text" v-model="loginUsername" required class="form-input">
-          </label>
-          <br>
-          <label class="form-label">
-            Password:
-            <input type="password" v-model="loginPassword" required class="form-input">
-          </label>
-          <br>
-          <button type="submit" class="form-button">Login</button>
-        </form>
-        <p>Don't have an account? <a @click="showRegisterForm = true">Register</a></p>
-      </div>
-    </div>
-  </div>
 </template>
 
 <script setup>
