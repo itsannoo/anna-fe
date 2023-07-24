@@ -18,6 +18,7 @@
     <div class="form-container" v-if="isLoggedIn">
       <RouterView />
     </div>
+  </div>
 </template>
 
 <script setup>
