@@ -15,7 +15,7 @@
       </nav>
     </header>
 
-    <div class="form-container" v-if="isLoggedIn">
+    <div class="form-container">
       <RouterView />
     </div>
   </div>
