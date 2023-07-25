@@ -43,14 +43,13 @@ const register = async () => {
 
     if (response.status === 200) {
       console.log(response.data.message);
-      // Display a success message to the user
-
-      // Redirect the user to the login page
+      
       showRegisterForm = false; // Hide the register form after successful registration
     } else {
-      console.error(response.data.error);
-      // Display an error message to the user
+      console.error(response.data.error); 
     }
+
+    
   } catch (error) {
     console.error(error);
     // Display an error message to the user
@@ -92,7 +91,7 @@ body {
 }
 
 .header {
-  background-color: #f9f9f9;
+  background-color: #020760;
   padding: 1rem;
   display: flex;
   justify-content: center;

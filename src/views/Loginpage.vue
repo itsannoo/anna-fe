@@ -12,8 +12,9 @@
         <input type="password" v-model="password" required class="login-input">
       </label>
       <br>
-      <button type="submit" class="login-button" @click="redirectTodata">Login</button>
+      <button type="submit" class="login-button">Login</button>
     </form>
+    <p v-if="error" class="error-message">{{ error }}</p>
   </div>
 </template>
 
@@ -24,33 +25,33 @@ export default {
   data() {
     return {
       username: '',
-      password: ''
+      password: '',
+      error: null
     };
   },
   methods: {
     async login() {
-      try {
-        const response = await axios.post('https://anna-be.vercel.app/login', {
-          username: this.username,
-          password: this.password
-        });
+  try {
+    const response = await axios.post('https://anna-be.vercel.app/login', {
+      username: this.username,
+      password: this.password
+    });
 
-        if (response.status === 200) {
-          const { token } = response.data;
-          // Save the token to local storage as a cookie
-          localStorage.setItem('token', token);
+    const { token } = response.data;
+    // Save the token to local storage as a cookie
+    localStorage.setItem('token', token);
 
-          // Redirect the user to the Data Rencana page
-          this.$router.push('/rencana');
-        } else {
-          console.error(response.data.error);
-          // Display an error message to the user
-        }
-      } catch (error) {
-        console.error(error);
-        // Display an error message to the user
-      }
+    // Redirect the user to the Data Rencana page
+    this.$router.push('/rencana');
+  } catch (error) {
+    console.error(error);
+    if (error.response && error.response.status === 401) {
+      this.error = 'Invalid username or password. Please try again.';
+    } else {
+      this.error = 'Failed to login. Please try again later.';
     }
+  }
+}
   }
 };
 </script>
